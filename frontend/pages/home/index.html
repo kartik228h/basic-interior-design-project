@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Transform your space with AI-powered interior design and room decor.">
+    <title>Interior Design &amp; AI Room Decor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./index.css">
+    <script src="./index.js" defer></script>
+</head>
+<body>
+    <header class="navbar">
+        <a class="logo" href="./index.html" aria-label="AI Decor home">
+            <span>AI Decor</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Primary navigation">
+            <ul class="nav-links">
+                <li><a href="#ai-decor">AI Decor</a></li>
+                <li><a href="#upload-panel">Furniture</a></li>
+                <li><a href="#upload-panel">Architects</a></li>
+                <li><a href="#upload-panel">Contact</a></li>
+            </ul>
+        </nav>
+
+        <a class="login-button" href="/frontend/pages/login/login.html" aria-label="Login to AI Decor">
+            <span>Login</span>
+        </a>
+        <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+
+    <main class="page-shell">
+        <section class="hero" id="ai-decor" aria-labelledby="hero-title">
+            <div class="hero-copy">
+                <h5 id="name_of_project">DECORA</h5>
+                <p class="eyebrow">AI Interior Designer</p>
+                <h1 id="hero-title">Design your room<br>with <span>AI</span></h1>
+                <p class="hero-description">Upload a photo and choose a style to preview a new look.</p>
+
+                <div class="upload-panel" id="upload-panel">
+                    <label class="upload-dropzone" for="room-image" id="dropzone">
+                        <input type="file" id="room-image" accept="image/png,image/jpeg,image/webp">
+                        <span class="upload-icon">+</span>
+                        <span class="upload-text">
+                            <strong id="upload-title">Upload a room photo</strong>
+                            <small id="upload-subtitle">PNG, JPG or WEBP</small>
+                        </span>
+                        <span class="browse-button">Browse</span>
+                    </label>
+
+                    <div class="style-row" aria-label="Choose a design style">
+                        <span class="style-label">Style</span>
+                        <div class="style-options">
+                            <button class="style-chip active" type="button" data-style="Modern">Modern</button>
+                            <button class="style-chip" type="button" data-style="Minimal">Minimal</button>
+                            <button class="style-chip" type="button" data-style="Warm">Warm</button>
+                        </div>
+                    </div>
+
+                    <button class="generate-button" id="generate-button" type="button" disabled>
+                        <span>Generate my room</span>
+                    </button>
+                </div>
+            </div>
+
+            <aside class="design-preview" id="design-preview" aria-label="AI room design preview">
+                <div class="preview-toolbar">
+                    <div>
+                        <span class="status-dot"></span>
+                        <span id="preview-status">Ready to transform</span>
+                    </div>
+                    <button type="button" id="reset-preview" aria-label="Reset preview" hidden>Reset</button>
+                </div>
+
+                <div class="room-stage" id="room-stage">
+                    <img id="room-preview" src="/frontend/asset/IMAGES/DECORA_IMAGE_AI.png" alt="Decorated room preview">
+                    <div class="room-placeholder" id="room-illustration" hidden>
+                        <div class="room-placeholder-card">
+                            <span>Room preview</span>
+                            <small>Upload an image to begin</small>
+                        </div>
+                    </div>
+
+                    <div class="ai-result" id="ai-result" hidden>
+                        <span class="sparkle sparkle-one"></span>
+                        <span class="sparkle sparkle-two"></span>
+                        <span class="sparkle sparkle-three"></span>
+                    </div>
+                </div>
+
+                <div class="preview-footer">
+                    <p><strong id="selected-style">Modern</strong><small>Selected style</small></p>
+                </div>
+            </aside>
+        </section>
+    </main>
+</body>
+</html>
