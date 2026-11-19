@@ -14,7 +14,7 @@ const mainNav = document.querySelector(".main-nav");
 
 let selectedStyleName = "Modern";
 let uploadedImageUrl = "";
-const defaultRoomImage = "/frontend/asset/IMAGES/DECORA_IMAGE_AI.png";
+const defaultRoomImage = "../../../asset/IMAGES/home_image/DECORA_IMAGE_AI.png";
 
 function showUploadedRoom(file) {
     if (!file) return;
