@@ -33,11 +33,9 @@ if (!product || product.id !== furnitureId) {
         reviews.map((review) => `<article class="review-card"><strong>${review.name}</strong><span class="review-rating">${"★".repeat(review.rating)}</span><p>${review.text}</p></article>`).join("");
     document.getElementById("add-to-cart").addEventListener("click", () => {
         window.purchaseAddToCart.addToCart(product);
-        alert(`${product.name} added to cart`);
     });
     document.getElementById("purchase-now").addEventListener("click", () => {
         window.purchaseAddToCart.purchase(product);
-        alert(`Purchase started for ${product.name}`);
     });
     document.title = `${product.name} | AI Decor`;
 }

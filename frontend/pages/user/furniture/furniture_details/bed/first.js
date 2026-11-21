@@ -39,12 +39,10 @@ if (!product || product.id !== furnitureId) {
 
     document.getElementById("add-to-cart").addEventListener("click", () => {
         window.purchaseAddToCart.addToCart(product);
-        alert(`${product.name} added to cart`);
     });
 
     document.getElementById("purchase-now").addEventListener("click", () => {
         window.purchaseAddToCart.purchase(product);
-        alert(`Purchase started for ${product.name}`);
     });
 
     document.title = `${product.name} | AI Decor`;
