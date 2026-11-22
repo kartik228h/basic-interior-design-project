@@ -1,0 +1,14 @@
+/* Decora shared design tokens and safe utility classes.
+   Intentionally does not reset or override existing page-specific styles. */
+:root {
+  --decora-color-ink: #1f2933;
+  --decora-color-muted: #6b7280;
+  --decora-color-surface: #ffffff;
+  --decora-color-border: #e5e7eb;
+  --decora-color-accent: #b88a44;
+  --decora-radius-sm: 8px;
+  --decora-radius-md: 14px;
+  --decora-shadow-soft: 0 8px 24px rgba(31, 41, 51, 0.08);
+}
+.decora-container { width: min(100% - 2rem, 1200px); margin-inline: auto; }
+.decora-muted { color: var(--decora-color-muted); }
