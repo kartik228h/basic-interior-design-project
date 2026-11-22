@@ -9,6 +9,46 @@ import { createChat } from "https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bun
 const webhookUrl =
   "https://decorachatbot.app.n8n.cloud/webhook/ff706ad7-8537-496c-8197-38bbf60ac060/chat";
 
+const chatOpenStorageKey = "decora-chat-open";
+
+const isChatOpen = () => {
+  const chatWindow = document.querySelector(".chat-window");
+  return Boolean(chatWindow && getComputedStyle(chatWindow).display !== "none");
+};
+
+const saveChatState = (isOpen) => {
+  localStorage.setItem(chatOpenStorageKey, String(isOpen));
+};
+
+const restoreChatState = (attempt = 0) => {
+  if (localStorage.getItem(chatOpenStorageKey) !== "true") {
+    return;
+  }
+
+  const toggle = document.querySelector(".chat-window-toggle");
+  if (toggle && !isChatOpen()) {
+    toggle.click();
+    return;
+  }
+
+  if (attempt < 200) {
+    window.setTimeout(() => restoreChatState(attempt + 1), 50);
+  }
+};
+
+document.addEventListener("click", (event) => {
+  const target = event.target;
+  if (!(target instanceof Element)) {
+    return;
+  }
+
+  if (target.closest(".chat-window-toggle")) {
+    window.setTimeout(() => saveChatState(isChatOpen()), 0);
+  } else if (target.closest(".chat-close-button")) {
+    saveChatState(false);
+  }
+});
+
 createChat({
   webhookUrl,
   mode: "window",
@@ -28,3 +68,5 @@ createChat({
     }
   }
 });
+
+restoreChatState();
