@@ -99,5 +99,18 @@
             </aside>
         </section>
     </main>
+        <!-- Chatbot -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css"
+      rel="stylesheet"
+    />
+    <script type="module">
+      import { createChat } from "https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js";
+
+      createChat({
+        webhookUrl:
+          "https://decorachatbot.app.n8n.cloud/webhook/ff706ad7-8537-496c-8197-38bbf60ac060/chat",
+      });
+    </script>
 </body>
 </html>
