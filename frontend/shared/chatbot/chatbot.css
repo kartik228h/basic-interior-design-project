@@ -1,0 +1,15 @@
+/* Decora shared n8n chat styles. Page styles remain untouched. */
+@import url("https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css");
+
+:root {
+  --chat--color-primary: #b88a44;
+  --chat--color-primary-shade-50: #a77a38;
+  --chat--color-primary-shade-100: #946b32;
+  --chat--window--width: 380px;
+  --chat--window--height: 600px;
+  --chat--border-radius: 14px;
+  --chat--message--bot--background: #f5f2ed;
+  --chat--message--bot--color: #242424;
+  --chat--message--user--background: #b88a44;
+  --chat--message--user--color: #ffffff;
+}

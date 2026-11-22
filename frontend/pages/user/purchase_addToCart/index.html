@@ -1,50 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shopping Cart | AI Decor</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style.css" />
     <script src="./first.js" defer></script>
-</head>
-<body>
+    <link rel="stylesheet" href="../../../shared/global.css" />
+    <link rel="stylesheet" href="../../../shared/chatbot/chatbot.css" />
+  </head>
+  <body>
     <header class="navbar">
-        <a class="logo" href="../home/index.html">AI Decor</a>
-        <a class="back-link" href="../furniture/furniture_list/index.html">Continue shopping</a>
+      <a class="logo" href="../home/index.html">AI Decor</a>
+      <a class="back-link" href="../furniture/furniture_list/index.html"
+        >Continue shopping</a
+      >
     </header>
 
     <main class="cart-page">
-        <section class="cart-heading">
-            <p class="eyebrow">Your selection</p>
-            <h1>Shopping Cart</h1>
+      <section class="cart-heading">
+        <p class="eyebrow">Your selection</p>
+        <h1>Shopping Cart</h1>
+      </section>
+
+      <div class="cart-layout">
+        <section class="cart-items-section" aria-labelledby="cart-items-title">
+          <div class="section-heading">
+            <h2 id="cart-items-title">Cart Items</h2>
+            <span id="cart-count">0 items</span>
+          </div>
+          <div id="cart-items" class="cart-items"></div>
         </section>
 
-        <div class="cart-layout">
-            <section class="cart-items-section" aria-labelledby="cart-items-title">
-                <div class="section-heading">
-                    <h2 id="cart-items-title">Cart Items</h2>
-                    <span id="cart-count">0 items</span>
-                </div>
-                <div id="cart-items" class="cart-items"></div>
-            </section>
-
-            <aside class="order-summary" aria-labelledby="summary-title">
-                <h2 id="summary-title">Order Summary</h2>
-                <div class="summary-row">
-                    <span>Subtotal</span>
-                    <strong id="subtotal">₹0</strong>
-                </div>
-                <div class="summary-row">
-                    <span>Delivery</span>
-                    <strong>Free</strong>
-                </div>
-                <div class="summary-total">
-                    <span>Total</span>
-                    <strong id="total">₹0</strong>
-                </div>
-                <button id="checkout-button" class="checkout-button" type="button">Proceed to Checkout</button>
-            </aside>
-        </div>
+        <aside class="order-summary" aria-labelledby="summary-title">
+          <h2 id="summary-title">Order Summary</h2>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <strong id="subtotal">₹0</strong>
+          </div>
+          <div class="summary-row">
+            <span>Delivery</span>
+            <strong>Free</strong>
+          </div>
+          <div class="summary-total">
+            <span>Total</span>
+            <strong id="total">₹0</strong>
+          </div>
+          <button id="checkout-button" class="checkout-button" type="button">
+            Proceed to Checkout
+          </button>
+        </aside>
+      </div>
     </main>
-</body>
+    <script type="module" src="../../../shared/chatbot/chatbot.js"></script>
+  </body>
 </html>

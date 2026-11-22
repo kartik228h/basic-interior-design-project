@@ -1,0 +1,30 @@
+/**
+ * Decora shared chatbot.
+ * Included on every user-facing page except login.
+ * loadPreviousSession allows the n8n chat widget to restore its session
+ * when the visitor navigates between pages on the same site origin.
+ */
+import { createChat } from "https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js";
+
+const webhookUrl =
+  "https://decorachatbot.app.n8n.cloud/webhook/ff706ad7-8537-496c-8197-38bbf60ac060/chat";
+
+createChat({
+  webhookUrl,
+  mode: "window",
+  showWelcomeScreen: false,
+  loadPreviousSession: true,
+  initialMessages: [
+    "Hi! Welcome to Decora. 🏡",
+    "I'm your AI interior design assistant. Tell me which room you'd like to transform, or upload a room photo to get started."
+  ],
+  i18n: {
+    en: {
+      title: "Decora Design Assistant",
+      subtitle: "Ideas for a home that feels like yours.",
+      footer: "",
+      getStarted: "Start a conversation",
+      inputPlaceholder: "Ask Decora about your home..."
+    }
+  }
+});

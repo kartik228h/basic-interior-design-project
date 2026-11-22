@@ -1,50 +1,63 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Find an architect to design your dream home.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Find an architect to design your dream home."
+    />
     <title>Architects | AI Decor</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
     <script src="./first.js" defer></script>
-</head>
-<body>
+    <link rel="stylesheet" href="../../../../shared/global.css" />
+    <link rel="stylesheet" href="../../../../shared/chatbot/chatbot.css" />
+  </head>
+  <body>
     <header class="navbar">
-        <a class="logo" href="../../home/index.html" aria-label="AI Decor home">AI Decor</a>
-        <a class="home-link" href="../../home/index.html">Back to home</a>
+      <a class="logo" href="../../home/index.html" aria-label="AI Decor home"
+        >AI Decor</a
+      >
+      <a class="home-link" href="../../home/index.html">Back to home</a>
     </header>
 
     <main class="page-shell">
-        <section class="page-heading" aria-labelledby="architects-title">
-            <p class="eyebrow">Find your design partner</p>
-            <h1 id="architects-title">Architects</h1>
-            <p class="page-subtitle">Design your home with the right expert.</p>
-        </section>
+      <section class="page-heading" aria-labelledby="architects-title">
+        <p class="eyebrow">Find your design partner</p>
+        <h1 id="architects-title">Architects</h1>
+        <p class="page-subtitle">Design your home with the right expert.</p>
+      </section>
 
-        <section class="architect-directory" aria-labelledby="directory-title">
-            <div class="directory-heading">
-                <div>
-                    <p class="section-label">Explore professionals</p>
-                    <h2 id="directory-title">Choose an architect</h2>
-                </div>
-                <span class="architect-count" id="architect-count">0 architects</span>
-            </div>
+      <section class="architect-directory" aria-labelledby="directory-title">
+        <div class="directory-heading">
+          <div>
+            <p class="section-label">Explore professionals</p>
+            <h2 id="directory-title">Choose an architect</h2>
+          </div>
+          <span class="architect-count" id="architect-count">0 architects</span>
+        </div>
 
-            <div class="sort-bar" aria-label="Sort architects">
-                <label for="sort-architects">Sort architects by</label>
-                <select id="sort-architects" name="sort">
-                    <option value="experience">Experience</option>
-                    <option value="rating">Rating from people</option>
-                </select>
-            </div>
+        <div class="sort-bar" aria-label="Sort architects">
+          <label for="sort-architects">Sort architects by</label>
+          <select id="sort-architects" name="sort">
+            <option value="experience">Experience</option>
+            <option value="rating">Rating from people</option>
+          </select>
+        </div>
 
-            <div class="architect-grid" id="architect-list" aria-live="polite">
-
-            </div>
-        </section>
+        <div
+          class="architect-grid"
+          id="architect-list"
+          aria-live="polite"
+        ></div>
+      </section>
     </main>
-</body>
+    <script type="module" src="../../../../shared/chatbot/chatbot.js"></script>
+  </body>
 </html>
