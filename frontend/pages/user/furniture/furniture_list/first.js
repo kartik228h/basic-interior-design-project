@@ -259,6 +259,10 @@ function getFurnitureProducts() {
     );
 }
 
+// The homepage reuses this catalog without duplicating product data.
+window.furniture_details = furniture_details;
+window.getFurnitureProducts = getFurnitureProducts;
+
 function renderFurniture() {
     const furnitureContainer = document.getElementById("furniture");
     const productCount = document.getElementById("product-count");
@@ -336,12 +340,16 @@ document.querySelectorAll(".category-button").forEach((button) => {
     });
 });
 
-document.getElementById("sort-furniture").addEventListener("change", renderFurniture);
+const sortFurniture = document.getElementById("sort-furniture");
+if (sortFurniture) {
+    sortFurniture.addEventListener("change", renderFurniture);
+}
 
 renderFurniture();
 
 const furnitureContainer = document.getElementById("furniture");
 
+if (furnitureContainer) {
 furnitureContainer.addEventListener("click", (event) => {
  const card = event.target.closest(".furniture-card");
 
@@ -360,3 +368,4 @@ furnitureContainer.addEventListener("click", (event) => {
     window.location.href =
         `../furniture_details/${category}/index.html?id=${encodeURIComponent(furnitureId)}`;
 });
+}

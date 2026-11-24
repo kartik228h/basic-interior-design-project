@@ -15,6 +15,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./index.css" />
+    <script src="../furniture/furniture_list/first.js" defer></script>
     <script src="./index.js" defer></script>
     <link rel="stylesheet" href="../../../shared/global.css" />
     <link rel="stylesheet" href="../../../shared/chatbot/chatbot.css" />
@@ -155,9 +156,49 @@
               <strong id="selected-style">Modern</strong
               ><small>Selected style</small>
             </p>
+            <div class="result-actions" id="result-actions" hidden>
+              <a id="download-result" download="ai-room-design.png">Download</a>
+              <button type="button" id="try-another">Try another design</button>
+            </div>
           </div>
         </aside>
       </section>
+
+      <div class="furniture-modal" id="furniture-modal" role="dialog" aria-modal="true" aria-labelledby="furniture-picker-title" hidden>
+        <button class="modal-backdrop" id="modal-backdrop" type="button" aria-label="Close furniture selection"></button>
+        <section class="furniture-picker" aria-labelledby="furniture-picker-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Personalize your room</p>
+            <h2 id="furniture-picker-title">Choose Your Furniture</h2>
+          </div>
+          <div class="modal-heading-actions">
+            <p class="selection-summary" id="selection-summary">0 products selected</p>
+            <button class="modal-close" id="modal-close" type="button" aria-label="Close furniture selection">Done</button>
+          </div>
+        </div>
+        <div class="furniture-toolbar">
+          <div class="category-filter" id="home-category-filter" aria-label="Filter furniture by category">
+            <button class="home-category-button active" type="button" data-category="all">All</button>
+            <button class="home-category-button" type="button" data-category="sofa">Sofa</button>
+            <button class="home-category-button" type="button" data-category="chair">Chair</button>
+            <button class="home-category-button" type="button" data-category="table">Table</button>
+            <button class="home-category-button" type="button" data-category="bed">Bed</button>
+            <button class="home-category-button" type="button" data-category="fan">Fan</button>
+            <button class="home-category-button" type="button" data-category="chandelier">Chandelier</button>
+            <button class="home-category-button" type="button" data-category="vase">Vase</button>
+          </div>
+          <label class="catalog-search">
+            <span class="sr-only">Search furniture</span>
+            <input id="furniture-search" type="search" placeholder="Search products" />
+          </label>
+        </div>
+        <div class="selected-products" id="selected-products" aria-live="polite"></div>
+        <div class="home-furniture-grid" id="home-furniture-grid" aria-live="polite"></div>
+        </section>
+      </div>
+
+      <p class="ai-message" id="ai-message" role="status" aria-live="polite"></p>
     </main>
 
     <script type="module" src="../../../shared/chatbot/chatbot.js"></script>
