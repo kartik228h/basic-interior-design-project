@@ -8,14 +8,21 @@ import aiRoutes from "./routes/aiRoutes.js";
 const app = express();
 const port = Number(process.env.PORT) || 5000;
 
-const allowedOrigins = new Set([
-    "http://localhost:3002",
-    "http://127.0.0.1:3002"
-]);
+// Local development: allow the frontend from localhost / 127.0.0.1 on any port
+// (Live Server uses 5500 by default, others use 3002, 5173, 8080, ...).
+function isLocalOrigin(origin) {
+    try {
+        const { protocol, hostname } = new URL(origin);
+        return (protocol === "http:" || protocol === "https:") &&
+            (hostname === "localhost" || hostname === "127.0.0.1");
+    } catch {
+        return false;
+    }
+}
 
 app.use(cors({
     origin(origin, callback) {
-        if (!origin || allowedOrigins.has(origin)) {
+        if (!origin || isLocalOrigin(origin)) {
             callback(null, true);
             return;
         }

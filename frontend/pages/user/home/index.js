@@ -31,8 +31,55 @@ let selectedStyleName = "Modern";
 let uploadedImageUrl = "";
 let uploadedRoomFile = null;
 let homeSelectedCategory = "all";
+let quotaCooldownInterval = null;
+let quotaRetryAt = null;
 const selectedProducts = new Map();
 const defaultRoomImage = "../../../asset/IMAGES/home_image/DECORA_IMAGE_AI.png";
+const quotaStorageKey = "decora-image-quota-retry-at";
+
+function formatRemainingTime(milliseconds) {
+    const totalSeconds = Math.max(0, Math.ceil(milliseconds / 1000));
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+    return `${hours}h ${String(minutes).padStart(2, "0")}m ${String(seconds).padStart(2, "0")}s`;
+}
+
+function clearQuotaCooldown() {
+    if (quotaCooldownInterval) clearInterval(quotaCooldownInterval);
+    quotaCooldownInterval = null;
+    quotaRetryAt = null;
+    localStorage.removeItem(quotaStorageKey);
+    generateButton.disabled = !uploadedRoomFile || selectedProducts.size === 0;
+}
+
+function updateQuotaCountdown() {
+    if (!quotaRetryAt) return;
+    const remaining = quotaRetryAt.getTime() - Date.now();
+    if (remaining <= 0) {
+        clearQuotaCooldown();
+        previewStatus.textContent = "Ready to generate";
+        showMessage("Daily image limit has reset. You can generate again.");
+        generateButton.querySelector("span").textContent = "Generate my room";
+        return;
+    }
+
+    previewStatus.textContent = "Image limit reached";
+    showMessage(`Daily limit reached. Please wait ${formatRemainingTime(remaining)}.`, true);
+    generateButton.disabled = true;
+    generateButton.querySelector("span").textContent = "Limit reached";
+}
+
+function startQuotaCooldown(retryAt) {
+    const parsed = retryAt ? new Date(retryAt) : new Date(Date.now() + 24 * 60 * 60 * 1000);
+    if (Number.isNaN(parsed.getTime()) || parsed.getTime() <= Date.now()) return;
+
+    quotaRetryAt = parsed;
+    localStorage.setItem(quotaStorageKey, parsed.toISOString());
+    if (quotaCooldownInterval) clearInterval(quotaCooldownInterval);
+    updateQuotaCountdown();
+    quotaCooldownInterval = setInterval(updateQuotaCountdown, 1000);
+}
 
 function showMessage(text, isError = false) {
     message.textContent = text;
@@ -140,7 +187,8 @@ function renderSelection() {
         chip.textContent = product.name;
         selectedProductsContainer.appendChild(chip);
     });
-    generateButton.disabled = !uploadedRoomFile || count === 0;
+    generateButton.disabled = (!uploadedRoomFile || count === 0)
+        || Boolean(quotaRetryAt && quotaRetryAt.getTime() > Date.now());
     renderFurniture();
 }
 
@@ -165,6 +213,10 @@ async function fetchReferenceImage(product) {
 async function generateRoom() {
     if (!uploadedRoomFile || selectedProducts.size === 0) {
         showMessage("Upload a room image and select at least one product.", true);
+        return;
+    }
+    if (quotaRetryAt && quotaRetryAt.getTime() > Date.now()) {
+        updateQuotaCountdown();
         return;
     }
 
@@ -199,7 +251,10 @@ async function generateRoom() {
         }
         const result = await response.json().catch(() => ({}));
         if (!response.ok || !result.success || !result.generatedImage) {
-            throw new Error(result.message || "The design could not be generated.");
+            if (result.quotaExceeded) startQuotaCooldown(result.retryAt);
+            const error = new Error(result.message || "The design could not be generated.");
+            error.quotaExceeded = Boolean(result.quotaExceeded);
+            throw error;
         }
 
         roomPreview.src = result.generatedImage;
@@ -213,9 +268,13 @@ async function generateRoom() {
             : "Your AI room design is ready.");
         generateButton.querySelector("span").textContent = "Generate another look";
     } catch (error) {
-        previewStatus.textContent = "Generation failed";
-        showMessage(error.message, true);
-        generateButton.querySelector("span").textContent = "Generate my room";
+        if (error.quotaExceeded) {
+            updateQuotaCountdown();
+        } else {
+            previewStatus.textContent = "Generation failed";
+            showMessage(error.message, true);
+            generateButton.querySelector("span").textContent = "Generate my room";
+        }
     } finally {
         generateButton.disabled = false;
     }
@@ -240,6 +299,9 @@ function resetAll() {
     showMessage("");
     renderSelection();
 }
+
+const storedQuotaRetryAt = localStorage.getItem(quotaStorageKey);
+if (storedQuotaRetryAt) startQuotaCooldown(storedQuotaRetryAt);
 
 roomInput.addEventListener("change", (event) => showUploadedRoom(event.target.files[0]));
 ["dragenter", "dragover"].forEach((eventName) => dropzone.addEventListener(eventName, (event) => {

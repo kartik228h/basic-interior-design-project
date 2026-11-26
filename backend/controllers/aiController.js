@@ -83,7 +83,20 @@ function getErrorDetails(error, provider) {
             return { status: 502, message: "Gemini rejected the API key. Check GEMINI_API_KEY in backend/.env." };
         }
         if (status === 429 || text.includes("quota") || text.includes("rate limit")) {
-            return { status: 429, message: "Gemini is rate-limiting this request or the API quota is exhausted. Try again later." };
+            const retryAfter = error?.retryAfter || error?.details?.[0]?.retryDelay;
+            let retryAt = null;
+            if (typeof retryAfter === "number") {
+                retryAt = new Date(Date.now() + retryAfter * 1000).toISOString();
+            } else if (typeof retryAfter === "string" && retryAfter.endsWith("s")) {
+                const seconds = Number.parseFloat(retryAfter);
+                if (Number.isFinite(seconds)) retryAt = new Date(Date.now() + seconds * 1000).toISOString();
+            }
+            return {
+                status: 429,
+                message: "Gemini is rate-limiting this request or the API quota is exhausted.",
+                retryAt,
+                quotaExceeded: true
+            };
         }
         if (status === 404 || (text.includes("model") && (text.includes("not found") || text.includes("unsupported")))) {
             return { status: 404, message: `The Gemini image model (${GEMINI_IMAGE_MODEL}) was not found or is unsupported for this API key.` };
@@ -98,7 +111,14 @@ function getErrorDetails(error, provider) {
         return { status: 502, message: "Cloudflare rejected the credentials. Check CF_ACCOUNT_ID and CF_API_TOKEN in backend/.env." };
     }
     if (status === 429 || text.includes("neurons") || text.includes("quota")) {
-        return { status: 429, message: "Daily free image limit reached. Try again tomorrow." };
+        const now = new Date();
+        const retryAt = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1));
+        return {
+            status: 429,
+            message: "Daily free image limit reached. Please wait for the limit to reset.",
+            retryAt: retryAt.toISOString(),
+            quotaExceeded: true
+        };
     }
     if (status === 504 || text.includes("timed out")) {
         return { status: 504, message: "Image generation took too long. Please try again." };
@@ -290,7 +310,9 @@ export async function designRoom(request, response) {
             success: false,
             message: details.message,
             providerStatus,
-            providerCategory: imageProvider
+            providerCategory: imageProvider,
+            quotaExceeded: Boolean(details.quotaExceeded),
+            retryAt: details.retryAt || null
         });
     }
 }
