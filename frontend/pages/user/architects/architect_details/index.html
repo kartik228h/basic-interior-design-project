@@ -74,7 +74,6 @@
               class="action-button"
               id="add-review-button"
               type="button"
-              hidden
               aria-expanded="false"
               aria-controls="review-form"
             >
@@ -110,54 +109,15 @@
         <section class="work-card" id="work" aria-labelledby="work-title" hidden>
           <div class="section-heading">
             <div>
-              <p class="section-label">Featured project</p>
-              <h2 id="work-title">Hell Design</h2>
+              <p class="section-label">Portfolio</p>
+              <h2 id="work-title"></h2>
             </div>
           </div>
-          <p class="work-description">
-            Adarsh's Hell Design project turns Dante's Inferno into a striking
-            visual world. Fiery landscapes, towering structures, and a dramatic
-            entrance create an immersive journey through the nine circles.
-            Carefully considered details and lighting give each scene its own
-            atmosphere, showcasing his creativity and dedication.
+          <p class="work-description" id="work-description" hidden></p>
+          <p class="portfolio-empty" id="portfolio-empty" hidden>
+            Portfolio projects for this architect will be added soon.
           </p>
-          <div class="work-gallery">
-            <figure class="work-project">
-              <img
-                src="../../../../asset/IMAGES/architects_images/architect_work_experience/adarsh_work/hell_design.jpg"
-                alt="Illustration of the nine circles of Hell"
-              />
-              <figcaption>The Nine Circles</figcaption>
-            </figure>
-            <figure class="work-project">
-              <img
-                src="../../../../asset/IMAGES/architects_images/architect_work_experience/adarsh_work/hell_design_1.jpg"
-                alt="Fiery interior landscape in the Hell Design project"
-              />
-              <figcaption>Infernal Landscape</figcaption>
-            </figure>
-            <figure class="work-project">
-              <img
-                src="../../../../asset/IMAGES/architects_images/architect_work_experience/adarsh_work/hell_design_2.jpg"
-                alt="Dark, towering architecture in a red sky"
-              />
-              <figcaption>Hellscape Architecture</figcaption>
-            </figure>
-            <figure class="work-project">
-              <img
-                src="../../../../asset/IMAGES/architects_images/architect_work_experience/adarsh_work/hell_design_3.jpg"
-                alt="A dramatic descent into a fiery underworld"
-              />
-              <figcaption>The Descent</figcaption>
-            </figure>
-            <figure class="work-project">
-              <img
-                src="../../../../asset/IMAGES/architects_images/architect_work_experience/adarsh_work/hell_gate.webp"
-                alt="A glowing gate surrounded by a dark stone archway"
-              />
-              <figcaption>The Hell Gate</figcaption>
-            </figure>
-          </div>
+          <div class="work-gallery" id="work-gallery"></div>
         </section>
       </div>
     </main>

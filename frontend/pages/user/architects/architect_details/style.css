@@ -222,6 +222,11 @@ h1 {
   line-height: 1.7;
 }
 
+.portfolio-empty {
+  margin-bottom: 0;
+  color: #748078;
+}
+
 .work-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
