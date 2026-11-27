@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Architect profile and reviews." />
+    <title>Architect Details | AI Decor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="../../../../shared/global.css" />
+    <link rel="stylesheet" href="../../../../shared/chatbot/chatbot.css" />
+    <script src="./first.js" defer></script>
+  </head>
+  <body>
+    <header class="navbar">
+      <a class="logo" href="../../home/index.html" aria-label="AI Decor home"
+        >AI Decor</a
+      >
+      <a class="home-link" href="../architect_list/index.html"
+        >Back to architects</a
+      >
+    </header>
+
+    <main class="page-shell">
+      <section class="page-heading" aria-labelledby="architect-name">
+        <p class="eyebrow">Architect profile</p>
+        <h1 id="architect-name">Architect Details</h1>
+      </section>
+
+      <p class="profile-error" id="profile-error" role="alert" hidden>
+        Architect details are not available. Please return to the architect
+        list and select a profile.
+      </p>
+
+      <div class="architect-profile" id="architect-profile" hidden>
+        <section class="profile-card" aria-labelledby="details-title">
+          <img class="profile-image" id="architect-image" alt="" />
+          <div class="profile-information">
+            <p class="section-label">Profile</p>
+            <h2 id="details-title">Architect Details</h2>
+            <dl class="details-list">
+              <div>
+                <dt>Experience</dt>
+                <dd id="architect-experience"></dd>
+              </div>
+              <div>
+                <dt>Rating</dt>
+                <dd id="architect-rating"></dd>
+              </div>
+              <div>
+                <dt>Location</dt>
+                <dd id="architect-location"></dd>
+              </div>
+              <div>
+                <dt>Specialization</dt>
+                <dd id="architect-specialization"></dd>
+              </div>
+            </dl>
+          </div>
+        </section>
+
+        <section class="reviews-card" aria-labelledby="reviews-title">
+          <div class="section-heading">
+            <div>
+              <p class="section-label">What clients say</p>
+              <h2 id="reviews-title">Reviews</h2>
+            </div>
+            <button
+              class="action-button"
+              id="add-review-button"
+              type="button"
+              hidden
+              aria-expanded="false"
+              aria-controls="review-form"
+            >
+              Add a Review
+            </button>
+          </div>
+          <p class="empty-state" id="empty-reviews">No reviews yet.</p>
+          <form class="editor-form" id="review-form" hidden>
+            <label>
+              Your name
+              <input name="reviewer" type="text" required />
+            </label>
+            <label>
+              Rating
+              <select name="rating" required>
+                <option value="5">5 stars</option>
+                <option value="4">4 stars</option>
+                <option value="3">3 stars</option>
+                <option value="2">2 stars</option>
+                <option value="1">1 star</option>
+              </select>
+            </label>
+            <label>
+              Your review
+              <textarea name="comment" rows="3" required></textarea>
+            </label>
+            <button class="action-button" type="submit">Post review</button>
+          </form>
+          <div class="review-list" id="review-list"></div>
+          <p class="session-note">Reviews are shown for this session only.</p>
+        </section>
+
+        <section class="work-card" id="work" aria-labelledby="work-title" hidden>
+          <div class="section-heading">
+            <div>
+              <p class="section-label">Featured project</p>
+              <h2 id="work-title">Hell Design</h2>
+            </div>
+          </div>
+          <p class="work-description">
+            Adarsh's Hell Design project turns Dante's Inferno into a striking
+            visual world. Fiery landscapes, towering structures, and a dramatic
+            entrance create an immersive journey through the nine circles.
+            Carefully considered details and lighting give each scene its own
+            atmosphere, showcasing his creativity and dedication.
+          </p>
+          <div class="work-gallery">
+            <figure class="work-project">
+              <img
+                src="../../../../asset/IMAGES/architects_images/architect_work_experience/adarsh_work/hell_design.jpg"
+                alt="Illustration of the nine circles of Hell"
+              />
+              <figcaption>The Nine Circles</figcaption>
+            </figure>
+            <figure class="work-project">
+              <img
+                src="../../../../asset/IMAGES/architects_images/architect_work_experience/adarsh_work/hell_design_1.jpg"
+                alt="Fiery interior landscape in the Hell Design project"
+              />
+              <figcaption>Infernal Landscape</figcaption>
+            </figure>
+            <figure class="work-project">
+              <img
+                src="../../../../asset/IMAGES/architects_images/architect_work_experience/adarsh_work/hell_design_2.jpg"
+                alt="Dark, towering architecture in a red sky"
+              />
+              <figcaption>Hellscape Architecture</figcaption>
+            </figure>
+            <figure class="work-project">
+              <img
+                src="../../../../asset/IMAGES/architects_images/architect_work_experience/adarsh_work/hell_design_3.jpg"
+                alt="A dramatic descent into a fiery underworld"
+              />
+              <figcaption>The Descent</figcaption>
+            </figure>
+            <figure class="work-project">
+              <img
+                src="../../../../asset/IMAGES/architects_images/architect_work_experience/adarsh_work/hell_gate.webp"
+                alt="A glowing gate surrounded by a dark stone archway"
+              />
+              <figcaption>The Hell Gate</figcaption>
+            </figure>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script type="module" src="../../../../shared/chatbot/chatbot.js"></script>
+  </body>
+</html>

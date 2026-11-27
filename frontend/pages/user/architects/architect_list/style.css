@@ -177,11 +177,14 @@ h2 {
 }
 
 .architect-card {
+    display: block;
     overflow: hidden;
     border: 1px solid var(--line);
     border-radius: 18px;
     background: #fbfcfa;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
+    color: inherit;
+    text-decoration: none;
 }
 
 .architect-card:hover {

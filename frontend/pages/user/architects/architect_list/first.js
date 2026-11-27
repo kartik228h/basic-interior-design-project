@@ -1,25 +1,25 @@
 //array containing the data of the architects
 const architects = [
-    {name:"adarsh", experience:12, rating:4.5, location:"delhi", specialization:"residential", image:"../../../asset/architects/adarsh.jpg"},
-    {name:"lakshay", experience:8, rating:4.2, location:"mumbai", specialization:"commercial", image:"../../../asset/architects/lakshay.jpg"},
-    {name:"samit", experience:15, rating:4.4, location:"bangalore", specialization:"industrial", image:"../../../asset/architects/samit.jpg"},
-    {name:"kartik", experience:10, rating:4.8, location:"delhi", specialization:"residential", image:"../../../asset/architects/kartik.jpg"},
-    {name:"priyanshu", experience:7, rating:4.1, location:"mumbai", specialization:"commercial", image:"../../../asset/architects/priyanshu.jpg"},
-    {name:"siddharth", experience:20, rating:4.0, location:"bangalore", specialization:"industrial", image:"../../../asset/architects/siddharth.jpg"},
-    {name:"rohit", experience:5, rating:4.0, location:"delhi", specialization:"residential", image:"../../../asset/architects/rohit.jpg"},
-    {name:"srishti", experience:12, rating:4.6, location:"mumbai", specialization:"commercial", image:"../../../asset/architects/srishti.jpg"},
-    {name:"sandhya", experience:9, rating:4.4, location:"bangalore", specialization:"industrial", image:"../../../asset/architects/sandhya.jpg"},
-    {name:"harshit", experience:11, rating:4.5, location:"delhi", specialization:"residential", image:"../../../asset/architects/harshit.jpg"},
-    {name:"ananya", experience:14, rating:4.7, location:"pune", specialization:"residential", image:"../../../asset/architects/ananya.jpg"},
-    {name:"vikram", experience:18, rating:4.7, location:"hyderabad", specialization:"commercial", image:"../../../asset/architects/vikram.jpg"},
-    {name:"neha", experience:6, rating:4.1, location:"delhi", specialization:"interior", image:"../../../asset/architects/neha.jpg"},
-    {name:"arjun", experience:13, rating:4.5, location:"mumbai", specialization:"industrial", image:"../../../asset/architects/arjun.jpg"},
-    {name:"meera", experience:16, rating:4.7, location:"bangalore", specialization:"landscape", image:"../../../asset/architects/meera.jpg"},
-    {name:"rahul", experience:9, rating:4.2, location:"pune", specialization:"commercial", image:"../../../asset/architects/rahul.jpg"},
-    {name:"isha", experience:11, rating:4.4, location:"hyderabad", specialization:"residential", image:"../../../asset/architects/isha.jpg"},
-    {name:"karan", experience:22, rating:4.0, location:"delhi", specialization:"industrial", image:"../../../asset/architects/karan.jpg"},
-    {name:"tanvi", experience:8, rating:4.3, location:"mumbai", specialization:"interior", image:"../../../asset/architects/tanvi.jpg"},
-    {name:"yash", experience:10, rating:4.0, location:"bangalore", specialization:"landscape", image:"../../../asset/architects/yash.jpg"}
+    {name:"adarsh", experience:12, rating:4.5, location:"delhi", specialization:"residential", image:"../../../../asset/IMAGES/architects_images/architect_identity_images/aadarsh%20verma.jpg"},
+    {name:"lakshi", experience:8, rating:4.2, location:"mumbai", specialization:"commercial", image:"../../../../asset/IMAGES/architects_images/architect_identity_images/architect_02.png"},
+    {name:"samit", experience:15, rating:4.4, location:"bangalore", specialization:"industrial", image:"../../../../asset/IMAGES/architects_images/architect_identity_images/samit.jpg"},
+    {name:"chavvi", experience:10, rating:4.8, location:"delhi", specialization:"residential", image:"../../../../asset/IMAGES/architects_images/architect_identity_images/architect_01.png"},
+    {name:"priyanshi", experience:7, rating:4.1, location:"mumbai", specialization:"commercial", image:"../../../../asset/IMAGES/architects_images/architect_identity_images/architect_05.png"},
+    {name:"siddharth", experience:20, rating:4.0, location:"bangalore", specialization:"industrial", image:"../../../../asset/IMAGES/architects_images/architect_identity_images/architect_06.png"},
+    {name:"rohit", experience:5, rating:4.0, location:"delhi", specialization:"residential", image:"../../../../asset/IMAGES/architects_images/architect_identity_images/architect_07.png"},
+    {name:"srishti", experience:12, rating:4.6, location:"mumbai", specialization:"commercial", image:"../../../../asset/IMAGES/architects_images/architect_identity_images/architect_08.png"},
+    {name:"sandhya", experience:9, rating:4.4, location:"bangalore", specialization:"industrial", image:"../../../../asset/IMAGES/architects_images/architect_identity_images/architect_09.png"},
+    {name:"harshit", experience:11, rating:4.5, location:"delhi", specialization:"residential", image:"../../../../asset/IMAGES/architects_images/architect_identity_images/architect_10.png"},
+    {name:"sanyam", experience:14, rating:4.7, location:"pune", specialization:"residential", image:"../../../../asset/IMAGES/architects_images/architect_identity_images/sanyam%20goel.jpg"},
+    {name:"vikrami", experience:18, rating:4.7, location:"hyderabad", specialization:"commercial", image:"../../../../asset/IMAGES/architects_images/architect_identity_images/architect_12.png"},
+    {name:"neha", experience:6, rating:4.1, location:"delhi", specialization:"interior", image:"../../../../asset/IMAGES/architects_images/architect_identity_images/architect_13.png"},
+    {name:"arya", experience:13, rating:4.5, location:"mumbai", specialization:"industrial", image:"../../../../asset/IMAGES/architects_images/architect_identity_images/architect_14.png"},
+    {name:"meera", experience:16, rating:4.7, location:"bangalore", specialization:"landscape", image:"../../../../asset/IMAGES/architects_images/architect_identity_images/architect_11.png"},
+    {name:"riha", experience:9, rating:4.2, location:"pune", specialization:"commercial", image:"../../../../asset/IMAGES/architects_images/architect_identity_images/architect_03.png"},
+    {name:"isha", experience:11, rating:4.4, location:"hyderabad", specialization:"residential", image:"../../../../asset/IMAGES/architects_images/architect_identity_images/architect_17.png"},
+    {name:"karan", experience:22, rating:4.0, location:"delhi", specialization:"industrial", image:"../../../../asset/IMAGES/architects_images/architect_identity_images/architect_18.png"},
+    {name:"danav", experience:8, rating:4.3, location:"mumbai", specialization:"interior", image:"../../../../asset/IMAGES/architects_images/architect_identity_images/architect_19.png"},
+    {name:"yash", experience:10, rating:4.0, location:"bangalore", specialization:"landscape", image:"../../../../asset/IMAGES/architects_images/architect_identity_images/architect_20.png"}
 ];
 
 const architectCount = document.getElementById("architect-count");
@@ -30,8 +30,18 @@ const architectList = document.getElementById("architect-list");
 function displayArchitects(architects){
 architectList.replaceChildren();
 for(let i=0; i<architects.length; i++){
-    const architect = document.createElement("article");
+    const architect = document.createElement("a");
     architect.className = "architect-card";
+    const detailsUrl = new URL("../architect_details/index.html", window.location.href);
+    detailsUrl.search = new URLSearchParams({
+        name: architects[i].name,
+        experience: architects[i].experience,
+        rating: architects[i].rating,
+        location: architects[i].location,
+        specialization: architects[i].specialization,
+        image: architects[i].image
+    }).toString();
+    architect.href = detailsUrl.toString();
     const architect_details = document.createElement("div");
     architect_details.className = "architect-details";
     //details of the architect
