@@ -85,17 +85,17 @@ if (name && !profile.hidden) {
         {
           image: "bdsm_rooms.jpg",
           alt: "Dark private room with custom furniture, chains, and red accent lighting",
-          title: "BDSM Room",
+          title: "",
         },
         {
           image: "mallu_kotha.jpg",
           alt: "Red room interior with a bed and accent lighting",
-          title: "MALLU KA KOTHA Interior",
+          title: "",
         },
         {
           image: "shabnam_ka_kotha.jpg",
           alt: "Room interior with a bed and wall text",
-          title: "SHABNAM KA KOTHA Interior",
+          title: "",
         },
         {
           image: "amity_university.jpg",
